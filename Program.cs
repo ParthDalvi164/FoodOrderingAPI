@@ -63,7 +63,7 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Version = "v1",
-        Title = "Smart Library API"
+        Title = "Food Ordering API"
     });
     var securityScheme = new OpenApiSecurityScheme
     {
@@ -93,7 +93,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Smart Library API");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Food Ordering API");
         options.EnablePersistAuthorization();
     });
 }
@@ -104,5 +104,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
 
 
