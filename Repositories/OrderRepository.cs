@@ -36,6 +36,15 @@ public class OrderRepository : IOrderRepository
             _context.SaveChanges();
         }
         invoice.TotalAmount = _context.OrderTrackings.Where(ot => ot.OrderId == order.Id).Sum(ot => ot.Dish.Price);
+        if (invoice.TotalAmount > 500)
+        {
+            invoice.AmountAfterDiscount = invoice.TotalAmount - 100; // flat 100rs discount
+        }
+        else
+        {
+            invoice.AmountAfterDiscount = invoice.TotalAmount;
+        }
+        
         _context.SaveChanges();
         
         return order;
